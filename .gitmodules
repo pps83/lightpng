@@ -1,6 +1,16 @@
-[submodule "third_party/zopfli"]
-	path = third_party/zopfli
-	url = https://code.google.com/p/zopfli/
 [submodule "third_party/libimagequant"]
 	path = third_party/libimagequant
-	url = git://github.com/pornel/improved-pngquant.git
+	url = ../libimagequant.git
+	branch = master
+[submodule "third_party/zopfli"]
+	path = third_party/zopfli
+	url = ../zopfli.git
+	branch = master
+[submodule "third_party/pthread-win32"]
+	path = third_party/pthread-win32
+	url = ../pthread-win32.git
+	branch = master
+[submodule "third_party/zlib"]
+	path = third_party/zlib
+	url = ../zlib.git
+	branch = master
