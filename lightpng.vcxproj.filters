@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\libjpeg">
+      <UniqueIdentifier>{f1b60c2d-7d27-4bdc-b94f-95df89789c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libpng">
+      <UniqueIdentifier>{f55f6ede-efee-4d0d-9580-7c59d9958761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\zlib">
+      <UniqueIdentifier>{af1c9b16-897d-49b2-9593-0c1caa3b35ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\JPEGReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lightpng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MedianCut16bitQuantizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MedianCut32bitQuantizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaletteOptimizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PNGReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PNGWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jutils.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jquant2.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jquant1.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jmemmgr.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jmemansi.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jidctint.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jidctfst.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jidctflt.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jfdctint.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jfdctfst.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jfdctflt.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jerror.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdtrans.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdsample.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdpostct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdmerge.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdmaster.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdmarker.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdmainct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdinput.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdhuff.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jddctmgr.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdcolor.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdcoefct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdatasrc.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdatadst.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdarith.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdapistd.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jdapimin.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jctrans.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcsample.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcprepct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcparam.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcomapi.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcmaster.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcmarker.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcmainct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcinit.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcdctmgr.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jccolor.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jccoefct.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcarith.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcapistd.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jcapimin.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jaricom.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\jpeg\jchuff.c">
+      <Filter>Source Files\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\png.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngerror.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngget.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngmem.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngpread.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngread.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngrio.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngrtran.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngrutil.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngset.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngtrans.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngwio.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngwrite.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngwtran.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\libpng\pngwutil.c">
+      <Filter>Source Files\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\zlib\zlib.cpp">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\BitChanger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\JPEGReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lightpng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LPType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MedianCut16bitQuantizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MedianCut32bitQuantizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaletteOptimizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PNGReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PNGWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ReduceColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

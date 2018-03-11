@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A567AD3F-FA63-4BEE-B59B-431C304F261D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>lightpnggit</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>third_party\libpng;third_party\jpeg;third_party\zlib;third_party\pthread-win32;third_party\libimagequant;third_party\zopfli\src\zopfli;C:\work\boost_1_64_0;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)build.msvc\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build.msvc\.obj\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>third_party\libpng;third_party\jpeg;third_party\zlib;third_party\pthread-win32;third_party\libimagequant;third_party\zopfli\src\zopfli;C:\work\boost_1_64_0;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)build.msvc\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build.msvc\.obj\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>third_party\libpng;third_party\jpeg;third_party\zlib;third_party\pthread-win32;third_party\libimagequant;third_party\zopfli\src\zopfli;C:\work\boost_1_64_0;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)build.msvc\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build.msvc\.obj\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>third_party\libpng;third_party\jpeg;third_party\zlib;third_party\pthread-win32;third_party\libimagequant;third_party\zopfli\src\zopfli;C:\work\boost_1_64_0;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)build.msvc\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)build.msvc\.obj\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>boost_1_53_0</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>boost_1_53_0</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\JPEGReader.cpp" />
+    <ClCompile Include="src\lightpng.cpp" />
+    <ClCompile Include="src\MedianCut16bitQuantizer.cpp" />
+    <ClCompile Include="src\MedianCut32bitQuantizer.cpp" />
+    <ClCompile Include="src\PaletteOptimizer.cpp" />
+    <ClCompile Include="src\PNGReader.cpp" />
+    <ClCompile Include="src\PNGWriter.cpp" />
+    <ClCompile Include="third_party\jpeg\jaricom.c" />
+    <ClCompile Include="third_party\jpeg\jcapimin.c" />
+    <ClCompile Include="third_party\jpeg\jcapistd.c" />
+    <ClCompile Include="third_party\jpeg\jcarith.c" />
+    <ClCompile Include="third_party\jpeg\jccoefct.c" />
+    <ClCompile Include="third_party\jpeg\jccolor.c" />
+    <ClCompile Include="third_party\jpeg\jcdctmgr.c" />
+    <ClCompile Include="third_party\jpeg\jchuff.c" />
+    <ClCompile Include="third_party\jpeg\jcinit.c" />
+    <ClCompile Include="third_party\jpeg\jcmainct.c" />
+    <ClCompile Include="third_party\jpeg\jcmarker.c" />
+    <ClCompile Include="third_party\jpeg\jcmaster.c" />
+    <ClCompile Include="third_party\jpeg\jcomapi.c" />
+    <ClCompile Include="third_party\jpeg\jcparam.c" />
+    <ClCompile Include="third_party\jpeg\jcprepct.c" />
+    <ClCompile Include="third_party\jpeg\jcsample.c" />
+    <ClCompile Include="third_party\jpeg\jctrans.c" />
+    <ClCompile Include="third_party\jpeg\jdapimin.c" />
+    <ClCompile Include="third_party\jpeg\jdapistd.c" />
+    <ClCompile Include="third_party\jpeg\jdarith.c" />
+    <ClCompile Include="third_party\jpeg\jdatadst.c" />
+    <ClCompile Include="third_party\jpeg\jdatasrc.c" />
+    <ClCompile Include="third_party\jpeg\jdcoefct.c" />
+    <ClCompile Include="third_party\jpeg\jdcolor.c" />
+    <ClCompile Include="third_party\jpeg\jddctmgr.c" />
+    <ClCompile Include="third_party\jpeg\jdhuff.c" />
+    <ClCompile Include="third_party\jpeg\jdinput.c" />
+    <ClCompile Include="third_party\jpeg\jdmainct.c" />
+    <ClCompile Include="third_party\jpeg\jdmarker.c" />
+    <ClCompile Include="third_party\jpeg\jdmaster.c" />
+    <ClCompile Include="third_party\jpeg\jdmerge.c" />
+    <ClCompile Include="third_party\jpeg\jdpostct.c" />
+    <ClCompile Include="third_party\jpeg\jdsample.c" />
+    <ClCompile Include="third_party\jpeg\jdtrans.c" />
+    <ClCompile Include="third_party\jpeg\jerror.c" />
+    <ClCompile Include="third_party\jpeg\jfdctflt.c" />
+    <ClCompile Include="third_party\jpeg\jfdctfst.c" />
+    <ClCompile Include="third_party\jpeg\jfdctint.c" />
+    <ClCompile Include="third_party\jpeg\jidctflt.c" />
+    <ClCompile Include="third_party\jpeg\jidctfst.c" />
+    <ClCompile Include="third_party\jpeg\jidctint.c" />
+    <ClCompile Include="third_party\jpeg\jmemansi.c" />
+    <ClCompile Include="third_party\jpeg\jmemmgr.c" />
+    <ClCompile Include="third_party\jpeg\jquant1.c" />
+    <ClCompile Include="third_party\jpeg\jquant2.c" />
+    <ClCompile Include="third_party\jpeg\jutils.c" />
+    <ClCompile Include="third_party\libpng\png.c" />
+    <ClCompile Include="third_party\libpng\pngerror.c" />
+    <ClCompile Include="third_party\libpng\pngget.c" />
+    <ClCompile Include="third_party\libpng\pngmem.c" />
+    <ClCompile Include="third_party\libpng\pngpread.c" />
+    <ClCompile Include="third_party\libpng\pngread.c" />
+    <ClCompile Include="third_party\libpng\pngrio.c" />
+    <ClCompile Include="third_party\libpng\pngrtran.c" />
+    <ClCompile Include="third_party\libpng\pngrutil.c" />
+    <ClCompile Include="third_party\libpng\pngset.c" />
+    <ClCompile Include="third_party\libpng\pngtrans.c" />
+    <ClCompile Include="third_party\libpng\pngwio.c" />
+    <ClCompile Include="third_party\libpng\pngwrite.c" />
+    <ClCompile Include="third_party\libpng\pngwtran.c" />
+    <ClCompile Include="third_party\libpng\pngwutil.c" />
+    <ClCompile Include="third_party\zlib\zlib.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\BitChanger.h" />
+    <ClInclude Include="src\Image.h" />
+    <ClInclude Include="src\JPEGReader.h" />
+    <ClInclude Include="src\lightpng.h" />
+    <ClInclude Include="src\LPType.h" />
+    <ClInclude Include="src\MedianCut16bitQuantizer.h" />
+    <ClInclude Include="src\MedianCut32bitQuantizer.h" />
+    <ClInclude Include="src\PaletteOptimizer.h" />
+    <ClInclude Include="src\PNGReader.h" />
+    <ClInclude Include="src\PNGWriter.h" />
+    <ClInclude Include="src\Quantizer.h" />
+    <ClInclude Include="src\ReduceColor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="third_party\libimagequant\libimagequant.vcxproj">
+      <Project>{0f559900-1429-481f-970d-28295ee9e1c2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="third_party\pthread-win32\libpthread.vcxproj">
+      <Project>{51af13a2-2d11-4b48-9ac6-67895e056338}</Project>
+    </ProjectReference>
+    <ProjectReference Include="third_party\zopfli\msvc\libzopfli.vcxproj">
+      <Project>{cb844ddf-c987-41a8-af68-8d91ad918e63}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

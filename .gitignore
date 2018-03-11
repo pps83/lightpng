@@ -13,3 +13,9 @@
 
 # Compiled Python module
 *.pyc
+
+*.suo
+*.VC.opendb
+*.VC.db
+/.vs/
+/build.msvc/
