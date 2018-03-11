@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include <memory>
 #include "MedianCut16bitQuantizer.h"
 
 // This source code uses Median cut algorithm C++.
@@ -33,6 +34,25 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Retrieved from: http://en.literateprograms.org/Median_cut_algorithm_(C_Plus_Plus)?oldid=12754
 */
 
+
+template <typename T>
+static T min(const T a, const T b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
+
+template <typename T>
+static T max(const T a, const T b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
 Block::Block(Point* points, int pointsLength)
 {
     this->points_ = points;
@@ -45,7 +65,7 @@ Block::Block(Point* points, int pointsLength)
     colorIndex_ = -1;
 }
 
-int Block::calcLongestSide(int R, int G, int B, int A)
+void Block::calcLongestSide(int R, int G, int B, int A)
 {
     int m = -1;
     int thresholds[4] = {R, G, B, A};
@@ -101,7 +121,7 @@ inline size_t calcColorCode(int r, int g, int b, int a, int R, int G, int B, int
 	return ((r >> (8 - R)) << (G + B + A)) + ((g >> (8 - G)) << (B + A)) + ((b >> (8 - B)) << A) + (a >> (8 - A));
 }
 
-void Block::setColorIndex(int R, int G, int B, int A, size_t colorIndex, boost::scoped_array<short>& colorMap)
+void Block::setColorIndex(int R, int G, int B, int A, size_t colorIndex, std::unique_ptr<short[]>& colorMap)
 {
 	size_t stepR = 1 << (8 - R);
 	size_t stepG = 1 << (8 - G);
@@ -168,7 +188,7 @@ void Block::calcAverageColor(unsigned char& new_r, unsigned char& new_g, unsigne
 
 class CompareBlock {
 public:
-    bool operator()(boost::shared_ptr<Block>& b1, boost::shared_ptr<Block>& b2)
+    bool operator()(std::shared_ptr<Block>& b1, std::shared_ptr<Block>& b2)
     {
     	return b1->longestSideLength() < b2->longestSideLength();
     }
@@ -188,7 +208,7 @@ short MedianCut16bitQuantizer::searchNearestColor(int r, int g, int b, int a, bo
 {
 	double minDistance = 256 * 256 * 5;
 	short index = -1;
-	std::vector<boost::shared_ptr<Block> >::iterator i;
+	std::vector<std::shared_ptr<Block> >::iterator i;
 	if (skipAlpha)
 	{
 		for (i = blocks_.begin(); i != blocks_.end(); i++)
@@ -231,7 +251,7 @@ short MedianCut16bitQuantizer::searchNearestColor(int r, int g, int b, int a, bo
 void MedianCut16bitQuantizer::quantize(size_t R, size_t G, size_t B, size_t A)
 {
 	unsigned int desiredSize = 256;
-	boost::scoped_array<unsigned char> points(new unsigned char[4 * width_ * height_]);
+	std::unique_ptr<unsigned char[]> points(new unsigned char[4 * width_ * height_]);
     memcpy(points.get(), rawsrc_.get(), height_ * width_ * 4);
 
     Point* image = reinterpret_cast<Point*>(points.get());
@@ -247,15 +267,15 @@ void MedianCut16bitQuantizer::quantize(size_t R, size_t G, size_t B, size_t A)
     const unsigned int filterB = (1 << 8) - ThresholdB;
     const unsigned int filterA = (1 << 8) - ThresholdA;
 
-    std::priority_queue<boost::shared_ptr<Block>, std::vector<boost::shared_ptr<Block> >, CompareBlock> blockQueue;
-    boost::shared_ptr<Block> firstBlock(new Block(image, numPoints));
+    std::priority_queue<std::shared_ptr<Block>, std::vector<std::shared_ptr<Block> >, CompareBlock> blockQueue;
+    std::shared_ptr<Block> firstBlock(new Block(image, numPoints));
     firstBlock->shrink();
 	firstBlock->calcLongestSide(ThresholdR, ThresholdG, ThresholdB, ThresholdA);
     blockQueue.push(firstBlock);
 
     while (blockQueue.size() < desiredSize && blockQueue.top()->numPoints() > 1)
     {
-        boost::shared_ptr<Block> longestBlock(blockQueue.top());
+        std::shared_ptr<Block> longestBlock(blockQueue.top());
 
         blockQueue.pop();
         Point* begin  = longestBlock->getPoints();
@@ -278,8 +298,8 @@ void MedianCut16bitQuantizer::quantize(size_t R, size_t G, size_t B, size_t A)
 			break;
 		}
 
-		boost::shared_ptr<Block> block1(new Block(begin, median-begin));
-		boost::shared_ptr<Block> block2(new Block(median, end-median));
+		std::shared_ptr<Block> block1(new Block(begin, median-begin));
+		std::shared_ptr<Block> block2(new Block(median, end-median));
 		block1->shrink();
 		block2->shrink();
 		block1->calcLongestSide(ThresholdR, ThresholdG, ThresholdB, ThresholdA);
@@ -292,7 +312,7 @@ void MedianCut16bitQuantizer::quantize(size_t R, size_t G, size_t B, size_t A)
 
     size_t transindex = 0;
     size_t opaqueindex = 255;
-    boost::scoped_array<short> colorMap(new short[65536]);
+    std::unique_ptr<short[]> colorMap(new short[65536]);
     for (size_t i = 0; i < 65536; i++)
     {
     	colorMap[i] = -1;
@@ -300,7 +320,7 @@ void MedianCut16bitQuantizer::quantize(size_t R, size_t G, size_t B, size_t A)
 
     while (!blockQueue.empty())
     {
-        boost::shared_ptr<Block> block = blockQueue.top();
+        std::shared_ptr<Block> block = blockQueue.top();
         blocks_.push_back(block);
         blockQueue.pop();
         unsigned char new_r, new_g, new_b, new_a;

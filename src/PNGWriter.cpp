@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
-#include <boost/tr1/unordered_map.hpp>
+#include <unordered_map>
 #include <pthread.h>
 #include <zlib.h>
 #include <png.h>
@@ -239,6 +239,7 @@ void* MultithreadTask::thread_main(void* param)
         parameter_index = self->get_next();
     }
     pthread_exit(param);
+    return NULL;
 }
 
 
@@ -272,7 +273,7 @@ void PNGWriter::process(buffer_t raw_buffer)
 
 bool PNGWriter::can_convert_index_color_(buffer_t raw_buffer)
 {
-    boost::unordered_map<unsigned int, unsigned char> colormap;
+    std::unordered_map<unsigned int, unsigned char> colormap;
     buffer_t indexed_buffer(new unsigned char[width_ * height_]);
     if (has_alpha_)
     {
@@ -285,7 +286,7 @@ bool PNGWriter::can_convert_index_color_(buffer_t raw_buffer)
                 size_t offset = (y * width_ + x) * 4;
                 unsigned char alpha = raw_buffer[offset + 3];
                 unsigned int colorCode = (alpha == 0) ? 0 : (raw_buffer[offset] << 24) + (raw_buffer[offset + 1] << 16) + (raw_buffer[offset + 2]<< 8) + alpha;
-                boost::unordered_map<unsigned int, unsigned char>::iterator existing = colormap.find(colorCode);
+                std::unordered_map<unsigned int, unsigned char>::iterator existing = colormap.find(colorCode);
                 if (existing != colormap.end())
                 {
                     indexed_buffer[y * width_ + x] = existing->second;
@@ -315,7 +316,7 @@ bool PNGWriter::can_convert_index_color_(buffer_t raw_buffer)
             {
                 size_t offset = (y * width_ + x) * 3;
                 unsigned int colorCode = (raw_buffer[offset] << 24) + (raw_buffer[offset + 1] << 16) + (raw_buffer[offset + 2]<< 8) + 255;
-                boost::unordered_map<unsigned int, unsigned char>::iterator existing = colormap.find(colorCode);
+                std::unordered_map<unsigned int, unsigned char>::iterator existing = colormap.find(colorCode);
                 if (existing != colormap.end())
                 {
                     indexed_buffer[y * width_ + x] = existing->second;
@@ -338,7 +339,7 @@ bool PNGWriter::can_convert_index_color_(buffer_t raw_buffer)
     }
     palette_t palette(new png_color[256]);
     trans_t trans(new unsigned char[256]);
-    boost::unordered_map<unsigned int, unsigned char>::iterator iter;
+    std::unordered_map<unsigned int, unsigned char>::iterator iter;
     for (iter = colormap.begin(); iter != colormap.end(); iter++)
     {
         unsigned int colorCode = iter->first;

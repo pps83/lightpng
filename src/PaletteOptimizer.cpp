@@ -1,6 +1,6 @@
 #include <iostream>
-#include <boost/tr1/unordered_map.hpp>
-#include <boost/tr1/unordered_set.hpp>
+#include <unordered_map>
+#include <unordered_set>
 #include "PaletteOptimizer.h"
 
 PaletteOptimizer::PaletteOptimizer(size_t width, size_t height)
@@ -9,25 +9,25 @@ PaletteOptimizer::PaletteOptimizer(size_t width, size_t height)
     size_ = width * height;
 };
 
-bool PaletteOptimizer::process32bit(buffer_t src)
+void PaletteOptimizer::process32bit(buffer_t src)
 {
 }
 
-bool PaletteOptimizer::process24bit(buffer_t src)
+void PaletteOptimizer::process24bit(buffer_t src)
 {
 }
 
 void PaletteOptimizer::process8bit(buffer_t src , palette_t palette, trans_t trans)
 {
-    boost::unordered_map<unsigned char, unsigned char> palette_convert;
-    boost::unordered_map<unsigned int, unsigned char> optimized_palette;
-    boost::unordered_set<unsigned char> usedpalette_;
+    std::unordered_map<unsigned char, unsigned char> palette_convert;
+    std::unordered_map<unsigned int, unsigned char> optimized_palette;
+    std::unordered_set<unsigned char> usedpalette_;
 
     for (size_t i = 0; i < size_; i++)
     {
         usedpalette_.insert(src[i]);
     }
-    boost::unordered_set<unsigned char>::iterator it;
+    std::unordered_set<unsigned char>::iterator it;
 
     for (size_t i = 0; i < 256; i++)
     {
@@ -37,7 +37,7 @@ void PaletteOptimizer::process8bit(buffer_t src , palette_t palette, trans_t tra
             continue;
         }
         unsigned int color = (palette[i].red << 24) + (palette[i].green << 16) + (palette[i].blue << 8) + trans[i];
-        boost::unordered_map<unsigned int, unsigned char>::iterator existing = optimized_palette.find(color);
+        std::unordered_map<unsigned int, unsigned char>::iterator existing = optimized_palette.find(color);
         if (existing != optimized_palette.end())
         {
             palette_convert[i] = palette_convert[existing->second];
@@ -56,7 +56,7 @@ void PaletteOptimizer::process8bit(buffer_t src , palette_t palette, trans_t tra
     palette_size_ = optimized_palette.size();
     palette_.reset(new png_color[palette_size_]);
     trans_.reset(new unsigned char[trans_size_]);
-    boost::unordered_map<unsigned int, unsigned char>::iterator iter;
+    std::unordered_map<unsigned int, unsigned char>::iterator iter;
     for (iter = optimized_palette.begin(); iter != optimized_palette.end(); iter++)
     {
         size_t offset = palette_convert[iter->second];

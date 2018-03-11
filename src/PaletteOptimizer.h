@@ -8,8 +8,8 @@ class PaletteOptimizer
 public:
     explicit PaletteOptimizer(size_t width, size_t height);
 
-    bool process32bit(buffer_t src);
-    bool process24bit(buffer_t src);
+    void process32bit(buffer_t src);
+    void process24bit(buffer_t src);
     void process8bit(buffer_t src , palette_t palette, trans_t trans);
 
     buffer_t buffer()

@@ -1,8 +1,14 @@
-#include <iostream>
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#include <windows.h>
+#else
 #include <sys/time.h>
+#endif
+#include <iostream>
 #include <zlib.h>
 #include <png.h>
-#include <boost/scoped_ptr.hpp>
+#include <memory>
 #include "lightpng.h"
 #include "Image.h"
 #include "PNGReader.h"
@@ -62,6 +68,28 @@ bool check_ext(std::string filename, const char* ext)
     return false;
 }
 
+#ifdef _WIN32
+struct timeval
+{
+    long tv_sec;
+    long tv_usec;
+};
+
+static int gettimeofday(struct timeval * tp, struct timezone * tzp)
+{
+    SYSTEMTIME system_time;
+    FILETIME file_time;
+    uint64_t time;
+    GetSystemTime(&system_time);
+    SystemTimeToFileTime(&system_time, &file_time);
+    time = ((uint64_t)file_time.dwLowDateTime);
+    time += ((uint64_t)file_time.dwHighDateTime) << 32;
+
+    tp->tv_sec = (long)((time - 116444736000000000ULL) / 10000000L);
+    tp->tv_usec = (long)(system_time.wMilliseconds * 1000);
+    return 0;
+}
+#endif
 
 double get_time(void)
 {
@@ -77,14 +105,14 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
     for (int i = 1; i < argc; ++i)
     {
         std::string opt(argv[i]);
-        if (opt == "-h" or opt == "--help")
+        if (opt == "-h" || opt == "--help")
         {
             mode = helpMode;
             break;
         }
         if (state == 0)
         {
-            if (opt == "-o" or opt == "--optimize")
+            if (opt == "-o" || opt == "--optimize")
             {
                 ++i;
                 if (i == argc)
@@ -117,11 +145,11 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
                     break;
                 }
             }
-            else if (opt == "-b" or opt == "--benchmark")
+            else if (opt == "-b" || opt == "--benchmark")
             {
                 bench = true;
             }
-            else if (opt == "-v" or opt == "--verbose")
+            else if (opt == "-v" || opt == "--verbose")
             {
                 verbose = true;
             }
@@ -131,7 +159,7 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
                 inputType = PNGFile;
                 state = 1;
             }
-            else if (check_ext(opt, ".jpg") or check_ext(opt, ".jpeg"))
+            else if (check_ext(opt, ".jpg") || check_ext(opt, ".jpeg"))
             {
                 input = argv[i];
                 inputType = JPEGFile;
@@ -146,7 +174,7 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
         }
         else if (state == 1)
         {
-            if ((opt == "-16a") or (opt == "-p16a") or (opt == "-16") or (opt == "-p16"))
+            if ((opt == "-16a") || (opt == "-p16a") || (opt == "-16") || (opt == "-p16"))
             {
                 i++;
                 if (i == argc)
@@ -158,7 +186,7 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
                 std::string path(argv[i]);
                 if (check_ext(path, ".png"))
                 {
-                    if (opt == "-16a" or opt == "-16")
+                    if (opt == "-16a" || opt == "-16")
                     {
                         outputs.push_back(output_type(AlphaPNGFile, path));
                     }
@@ -174,7 +202,7 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
                     break;
                 }
             }
-            else if ((opt == "-16m") or (opt == "-p16m"))
+            else if ((opt == "-16m") || (opt == "-p16m"))
             {
                 i++;
                 if (i == argc)
@@ -202,7 +230,7 @@ void parse_arg(int argc, const char** argv, const char*& input, output_list& out
                     break;
                 }
             }
-            else if ((opt == "-16i") or (opt == "-p16i"))
+            else if ((opt == "-16i") || (opt == "-p16i"))
             {
                 i++;
                 if (i == argc)
@@ -301,16 +329,16 @@ void process_image(const char*& input_path, output_list& outputs, size_t optimiz
 
     if (reader->valid())
     {
-        boost::scoped_ptr<PNGWriter> mask_png_writer;
-        boost::scoped_ptr<PNGWriter> alpha_png_writer;
-        boost::scoped_ptr<PNGWriter> noalpha_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_mask_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_alpha_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_noalpha_png_writer;
-        boost::scoped_ptr<PNGWriter> fullcolor_png_writer;
-        boost::scoped_ptr<PNGWriter> indexed_color_png_writer;
-        boost::scoped_ptr<PNGWriter> indexed_reduced_color_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_indexed_reduced_color_png_writer;
+        std::unique_ptr<PNGWriter> mask_png_writer;
+        std::unique_ptr<PNGWriter> alpha_png_writer;
+        std::unique_ptr<PNGWriter> noalpha_png_writer;
+        std::unique_ptr<PNGWriter> preview_mask_png_writer;
+        std::unique_ptr<PNGWriter> preview_alpha_png_writer;
+        std::unique_ptr<PNGWriter> preview_noalpha_png_writer;
+        std::unique_ptr<PNGWriter> fullcolor_png_writer;
+        std::unique_ptr<PNGWriter> indexed_color_png_writer;
+        std::unique_ptr<PNGWriter> indexed_reduced_color_png_writer;
+        std::unique_ptr<PNGWriter> preview_indexed_reduced_color_png_writer;
         buffer_t image565;
         buffer_t image565p;
         buffer_t image5551;

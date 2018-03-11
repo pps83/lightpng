@@ -2,7 +2,7 @@
 #define MEDIAN_CUT_16BIT_QUANTIZER_H
 
 #include <iostream>
-#include <boost/scoped_array.hpp>
+#include <memory>
 #include "Quantizer.h"
 #include "LPType.h"
 #include "Image.h"
@@ -30,31 +30,13 @@ public:
     inline int longestSideIndex() const { return longestSideIndex_; };
     inline int longestSideLength() const { return longestSideLength_ ;};
     int colorIndex() const { return colorIndex_; };
-    int calcLongestSide(int R, int G, int B, int A);
+    void calcLongestSide(int R, int G, int B, int A);
     bool operator<(const Block& rhs) const;
     void shrink();
     Point* minCorner() { return &minCorner_; }
     Point* maxCorner() { return &maxCorner_; }
-    void setColorIndex(int R, int G, int B, int A, size_t colorIndex, boost::scoped_array<short>& colorMap);
+    void setColorIndex(int R, int G, int B, int A, size_t colorIndex, std::unique_ptr<short[]>& colorMap);
     void calcAverageColor(unsigned char&, unsigned char&, unsigned char&, unsigned char&);
-private:
-    template <typename T>
-    static T min(const T a, const T b)
-    {
-        if (a < b)
-            return a;
-        else
-            return b;
-    }
-
-    template <typename T>
-    static T max(const T a, const T b)
-    {
-        if (a > b)
-            return a;
-        else
-            return b;
-    }
 };
 
 
@@ -67,7 +49,7 @@ public:
     void fixPalette(size_t R, size_t G, size_t B, size_t A);
 private:
     bool preview_;
-    std::vector<boost::shared_ptr<Block> > blocks_;
+    std::vector<std::shared_ptr<Block> > blocks_;
 
     short searchNearestColor(int r, int g, int b, int a, bool skipAlpha = false);
 

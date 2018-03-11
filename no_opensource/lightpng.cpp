@@ -2,7 +2,7 @@
 #include <sys/time.h>
 #include <zlib.h>
 #include <png.h>
-#include <boost/scoped_ptr.hpp>
+#include <memory>
 #include "lightpng.h"
 #include "Image.h"
 #include "PNGReader.h"
@@ -461,16 +461,16 @@ void process_image(const char*& input_path, output_list& outputs, size_t optimiz
 
     if (reader->valid())
     {
-        boost::scoped_ptr<PNGWriter> mask_png_writer;
-        boost::scoped_ptr<PNGWriter> alpha_png_writer;
-        boost::scoped_ptr<PNGWriter> noalpha_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_mask_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_alpha_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_noalpha_png_writer;
-        boost::scoped_ptr<PNGWriter> fullcolor_png_writer;
-        boost::scoped_ptr<PNGWriter> indexed_color_png_writer;
-        boost::scoped_ptr<PNGWriter> indexed_reduced_color_png_writer;
-        boost::scoped_ptr<PNGWriter> preview_indexed_reduced_color_png_writer;
+        std::unique_ptr<PNGWriter> mask_png_writer;
+        std::unique_ptr<PNGWriter> alpha_png_writer;
+        std::unique_ptr<PNGWriter> noalpha_png_writer;
+        std::unique_ptr<PNGWriter> preview_mask_png_writer;
+        std::unique_ptr<PNGWriter> preview_alpha_png_writer;
+        std::unique_ptr<PNGWriter> preview_noalpha_png_writer;
+        std::unique_ptr<PNGWriter> fullcolor_png_writer;
+        std::unique_ptr<PNGWriter> indexed_color_png_writer;
+        std::unique_ptr<PNGWriter> indexed_reduced_color_png_writer;
+        std::unique_ptr<PNGWriter> preview_indexed_reduced_color_png_writer;
         buffer_t image565;
         buffer_t image565p;
         buffer_t image5551;
@@ -479,10 +479,10 @@ void process_image(const char*& input_path, output_list& outputs, size_t optimiz
         buffer_t image4444p;
 
         #ifdef PVRTC
-        boost::scoped_ptr<PVRWriter> pvr_writer;
+        std::unique_ptr<PVRWriter> pvr_writer;
         #endif
         #ifdef ATITC
-        boost::scoped_ptr<ATCWriter> atc_writer;
+        std::unique_ptr<ATCWriter> atc_writer;
         #endif
         for (output_list::iterator i = outputs.begin(); i != outputs.end(); ++i)
         {
